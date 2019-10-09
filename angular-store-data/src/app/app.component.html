@@ -1,0 +1,44 @@
+<nz-layout class="app-layout">
+  <nz-sider
+    class="menu-sidebar"
+    nzCollapsible
+    nzWidth="256px"
+    nzBreakpoint="md"
+    [(nzCollapsed)]="isCollapsed"
+    [nzTrigger]="null"
+  >
+    <div class="sidebar-logo">
+      <h3 style="color: white; font-weight: bold">To do app</h3>
+    </div>
+    <ul
+      nz-menu
+      nzTheme="dark"
+      nzMode="inline"
+      [nzInlineCollapsed]="isCollapsed"
+    >
+      <li nz-menu-item><a routerLink="/general">General</a></li>
+      <li nz-menu-item><a routerLink="/series">Series</a></li>
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header nzType="flex" nzJustify="end">
+      <div class="app-header app-header--flex">
+        <span
+          class="header-trigger header-trigger--center"
+          (click)="isCollapsed = !isCollapsed"
+        >
+          <i
+            class="trigger"
+            nz-icon
+            [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <div class="inner-content">
+        <app-main></app-main>
+      </div>
+    </nz-content>
+  </nz-layout>
+</nz-layout>
