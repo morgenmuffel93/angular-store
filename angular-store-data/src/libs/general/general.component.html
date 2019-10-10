@@ -1,1 +1,42 @@
 <div>General</div>
+<button nz-button [nzSize]="size" nzType="default">
+  Show done
+</button>
+<button nz-button [nzSize]="size" nzType="default">
+  Show to do
+</button>
+<div>Lisssttt</div>
+
+<li *ngFor="let item of list; let i = index">
+  <label
+    [ngClass]="item.done ? 'done-strike' : ''"
+    nz-checkbox
+    [(ngModel)]="item.done"
+    (ngModelChange)="checkItem(item)"
+    >{{ item.name }}</label
+  >
+  <button
+    active
+    nz-button
+    [nzSize]="small"
+    nzType="danger"
+    (click)="deleteItem(item)"
+  >
+    Delete
+  </button>
+</li>
+<nz-input-group [nzSuffix]="addBtn">
+  <input type="text" nz-input placeholder="Name" [(ngModel)]="addName" />
+</nz-input-group>
+<ng-template #addBtn>
+  <button
+    active
+    *ngIf="addName"
+    nz-button
+    [nzSize]="size"
+    nzType="default"
+    (click)="addItem(addName)"
+  >
+    Add
+  </button>
+</ng-template>
